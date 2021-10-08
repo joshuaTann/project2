@@ -1,7 +1,14 @@
 import './App.css';
+import { CssBaseline } from '@mui/material';
 import { useState, useEffect } from 'react';
+import Homepage from './components/Homepage';
+import SeasonPage from './components/SeasonPage';
+import SeasonSelect from './components/SeasonSelect';
+import DriverSelect from './components/DriverSelect';
 
 function App() {
+  <CssBaseline />
+
   const [raceData, setRaceData] = useState([])
 
 
@@ -12,15 +19,16 @@ function App() {
         console.log("raceData", races);
         setRaceData(races)
       });
-  },[]);
+  }, []);
 
 
   return (
     <div className="App">
-      <h1>Formula 1</h1>
-      <div>
-          Hamilton Result: {raceData?.MRData?.RaceTable.Races[0].Results[0].position}
-      </div>
+      {/* <Homepage /> */}
+      <SeasonSelect />
+      {/* <DriverSelect /> */}
+      {/* <SeasonPage raceData={raceData} /> */}
+
     </div>
   );
 }
