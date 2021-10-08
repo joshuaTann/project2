@@ -25,8 +25,8 @@ function App() {
   return (
     <div className="App">
       {/* <Homepage /> */}
-      <SeasonSelect />
-      {/* <DriverSelect /> */}
+      {/* <SeasonSelect /> */}
+      <DriverSelect />
       {/* <SeasonPage raceData={raceData} /> */}
 
     </div>

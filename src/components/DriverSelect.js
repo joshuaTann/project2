@@ -24,15 +24,17 @@ function DriverSelect() {
     }, []);
 
     const driversArr = driverData?.MRData?.DriverTable?.Drivers
-    console.log("driversArr", driversArr)
-
 
     const listOfDrivers = driversArr?.map((driver, i) => {
          return(driver.givenName +" "+ driver.familyName)
     })
 
-    console.log(listOfDrivers)
+    const [selectedDriver, setSelectedDriver] = useState()
+    const selectHandler = (text) => {
+        setSelectedDriver(text)
+    }
 
+    console.log(selectedDriver)
 
     return (
         <Container maxWidth="sm">
@@ -40,13 +42,14 @@ function DriverSelect() {
                 Choose your Driver:
             </Typography>
             <Autocomplete
+                onChange={(event, value) => selectHandler(value)}
                 disablePortal
                 id="combo-box-demo"
                 options={listOfDrivers}
                 sx={{ width: 300 }}
                 renderInput={(params) => <TextField {...params} label="Select a Driver" />}
             />
-            <Button variant="contained">Pick your Driver</Button>
+            <Button variant="contained">See the results</Button>
         </Container>
     )
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/material";
 import { Autocomplete } from "@mui/material";
@@ -12,9 +12,16 @@ function SeasonSelect() {
     const listOfSeasons = []
     var year = new Date().getFullYear()
     for (let i = 1950; i < year; i++) {
-        listOfSeasons.push(i)
+        listOfSeasons.push(`${i}`)
     }
-    listOfSeasons.push("Current")
+    listOfSeasons.push("current")
+
+    const [selectedSeason, setSelectedSeason] = useState(null)
+    const selectHandler = (text) => {
+        setSelectedSeason(text)
+    }
+
+    console.log(selectedSeason)
 
     return (
         <Container maxWidth="sm">
@@ -22,6 +29,7 @@ function SeasonSelect() {
                 Choose your Season:
             </Typography>
             <Autocomplete
+                onChange={(event, value) => selectHandler(value)}
                 disablePortal
                 id="combo-box-demo"
                 options={listOfSeasons}
