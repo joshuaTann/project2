@@ -39,7 +39,7 @@ function DriverSelect(props) {
 
     //Making sure the app doesn't crash while the api is fetching the list of drivers for that particular season
     if(listOfDrivers === undefined){
-        var displayDriverList = ["loading drivers...", "please wait a moment..."]
+        var displayDriverList = ["loading drivers please wait a moment..."]
     } else {
         displayDriverList = listOfDrivers
     }

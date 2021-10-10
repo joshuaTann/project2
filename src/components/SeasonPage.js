@@ -12,6 +12,32 @@ function SeasonPage(props) {
     console.log("Rounds Array", roundsArr)
 
 
+    const renderRounds = () => {
+        const roundsArr = props?.raceData?.MRData?.RaceTable?.Races
+        console.log("Rounds Array", roundsArr)
+
+        if(roundsArr !== undefined){
+            return(
+                roundsArr.map((r, i) => (
+                    <Grid item key={i}>
+                        <Card >
+                            <CardContent>
+                                <Typography variant="h6" gutterBottom>Round: {r?.round}</Typography>
+                                <Typography gutterBottom>Grand Prix: {r?.raceName}</Typography>
+                                <Typography gutterBottom>Track: {r?.Circuit?.circuitName}</Typography>
+                                <Typography gutterBottom>{props?.selectedDriver} Finishing Position: {r?.Results[0]?.position}</Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button>See More</Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                ))
+            )
+        }
+    }
+
+
     return (
         <>
             <AppBar position="relative">
@@ -32,21 +58,9 @@ function SeasonPage(props) {
                     </Container>
                 </div>
                 <div>
-                    <Container maxWidth="md">
-                        <Grid container spacing={4}>
-                            <Grid item>
-                                <Card >
-                                    <CardContent>
-                                        <Typography variant="h6" gutterBottom>Round: {props?.raceData?.MRData?.RaceTable?.Races[0]?.round}</Typography>
-                                        <Typography gutterBottom>Grand Prix: {props?.raceData?.MRData?.RaceTable?.Races[0]?.raceName}</Typography>
-                                        <Typography gutterBottom>Track: {props?.raceData?.MRData?.RaceTable?.Races[0]?.Circuit?.circuitName}</Typography>
-                                        <Typography gutterBottom>{props?.selectedDriver} Finishing Position: {props?.raceData?.MRData?.RaceTable?.Races[0]?.Results[0]?.position}</Typography>
-                                    </CardContent>
-                                    <CardActions>
-                                        <Button>See More</Button>
-                                    </CardActions>
-                                </Card>
-                            </Grid>
+                    <Container maxWidth="lg">
+                        <Grid container spacing={3}>
+                           {renderRounds()}
                         </Grid>
                     </Container>
                 </div>
@@ -59,5 +73,3 @@ function SeasonPage(props) {
 
 export default SeasonPage
 
-
-// {props?.selectedDriver} Finishing Position: {props?.raceData?.MRData?.RaceTable?.Races[0]?.Results[0]?.position}

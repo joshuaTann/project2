@@ -7,7 +7,6 @@ import SeasonPage from './components/SeasonPage';
 import SeasonSelect from './components/SeasonSelect';
 import DriverSelect from './components/DriverSelect';
 
-
 function App() {
   <CssBaseline />
   
