@@ -1,13 +1,14 @@
 import React from "react";
-import { useState } from "react";
 import { Typography } from "@mui/material";
 import { Container } from "@mui/material";
 import { Autocomplete } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 
-function SeasonSelect() {
+
+function SeasonSelect(props) {
 
     const listOfSeasons = []
     var year = new Date().getFullYear()
@@ -16,12 +17,20 @@ function SeasonSelect() {
     }
     listOfSeasons.push("current")
 
-    const [selectedSeason, setSelectedSeason] = useState(null)
-    const selectHandler = (text) => {
-        setSelectedSeason(text)
+    
+    const selectHandler = (text) => { //used to set the selected season on change of the text box value
+        props.setSelectedSeason(text)
     }
 
-    console.log(selectedSeason)
+console.log("Season Side Selected Season", props.selectedSeason)
+
+    const handleLink = (event) => {
+        if(props.selectedSeason === undefined || props.selectedSeason === null) {
+            alert("Please select a season before proceeding");
+            event.preventDefault();
+        }
+    }
+
 
     return (
         <Container maxWidth="sm">
@@ -36,7 +45,9 @@ function SeasonSelect() {
                 sx={{ width: 300, padding: 5 }}
                 renderInput={(params) => <TextField {...params} label="Select a season" />}
             />
+            <Link onClick={handleLink}  to={"/driverselect"}>
             <Button variant="contained">Pick your Driver</Button>
+            </Link>
         </Container>
     )
 }
