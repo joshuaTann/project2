@@ -15,6 +15,7 @@ function SeasonPage(props) {
         props.setSelectedDriver();
     }
 
+
     const renderRounds = () => {
         const roundsArr = props?.raceData?.MRData?.RaceTable?.Races
         console.log("Rounds Array", roundsArr)
@@ -31,7 +32,9 @@ function SeasonPage(props) {
                                 <Typography gutterBottom>{props?.selectedDriver} Finishing Position: {r?.Results[0]?.position}</Typography>
                             </CardContent>
                             <CardActions>
-                                <Button>See More</Button>
+                                <Link to={"/dashboard"}> 
+                                <Button onClick={() => {props.setRoundIndex(i); props.setRoundNumber(r?.round)}}>See More</Button>
+                                </Link>
                             </CardActions>
                         </Card>
                     </Grid>

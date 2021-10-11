@@ -12,12 +12,11 @@ function SeasonSelect(props) {
 
     const listOfSeasons = []
     var year = new Date().getFullYear()
-    for (let i = 1950; i < year; i++) {
+    for (let i = 1950; i <= year; i++) {
         listOfSeasons.push(`${i}`)
     }
-    listOfSeasons.push("current")
-
     
+
     const selectHandler = (text) => { //used to set the selected season on change of the text box value
         props.setSelectedSeason(text)
     }

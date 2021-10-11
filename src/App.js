@@ -6,6 +6,7 @@ import Homepage from './components/Homepage';
 import SeasonPage from './components/SeasonPage';
 import SeasonSelect from './components/SeasonSelect';
 import DriverSelect from './components/DriverSelect';
+import Dashboard from './components/Dashboard';
 
 function App() {
   <CssBaseline />
@@ -14,7 +15,9 @@ function App() {
   const [selectedSeason, setSelectedSeason] = useState() //setting the selected season
   const [selectedDriver, setSelectedDriver] = useState() //setting the selected driver
   const [driverId, setDriverId] = useState() //setting the selected driverId for 
-  
+  const [roundIndex, setRoundIndex] = useState() //setting the selected roundIndex
+  const [roundNumber, setRoundNumber] = useState() //setting the selected roundIndex
+
   var url = `https://ergast.com/api/f1/${selectedSeason}/drivers/${driverId}/results.json?`
   console.log("raceDataurl", url)
   
@@ -30,6 +33,8 @@ function App() {
   console.log("Appside Race Data", raceData)
   console.log("Appside DriverID", driverId)
   console.log("Appside Selected Season", selectedSeason)
+  console.log("Appside roundIndex", roundIndex)
+  console.log("Appside roundNumber", roundNumber)
   
   return (
     <div className="App">
@@ -43,10 +48,11 @@ function App() {
         <DriverSelect selectedDriver={selectedDriver} setSelectedDriver={setSelectedDriver} setSelectedSeason={setSelectedSeason} selectedSeason={selectedSeason} setDriverId={setDriverId} />
       </Route>
       <Route path="/seasondisplay">
-        <SeasonPage selectedSeason={selectedSeason} setSelectedSeason={setSelectedSeason} selectedDriver={selectedDriver} setSelectedDriver={setSelectedDriver} raceData={raceData} />
+        <SeasonPage selectedSeason={selectedSeason} setSelectedSeason={setSelectedSeason} selectedDriver={selectedDriver} setSelectedDriver={setSelectedDriver} raceData={raceData} setRoundIndex={setRoundIndex} setRoundNumber={setRoundNumber}/>
       </Route>
-      
-
+      <Route path="/dashboard">
+        <Dashboard raceData={raceData} selectedDriver={selectedDriver} selectedSeason={selectedSeason} roundIndex={roundIndex} setRoundIndex={setRoundIndex} roundNumber={roundNumber} setRoundNumber={setRoundNumber}/>
+      </Route>
     </div>
   );
 }
