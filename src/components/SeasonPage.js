@@ -3,21 +3,24 @@ import { Card, CardContent, CardActions, Container, Grid, Typography } from "@mu
 import { Toolbar } from "@mui/material";
 import { Button } from "@mui/material";
 import { AppBar } from "@mui/material";
+import { Link } from "react-router-dom";
+
 
 
 
 function SeasonPage(props) {
 
-    const roundsArr = props?.raceData?.MRData?.RaceTable?.Races
-    console.log("Rounds Array", roundsArr)
-
+    const changeTheSeason = () => { //making sure the link is deactivated when going back to choose the season
+        props.setSelectedSeason();
+        props.setSelectedDriver();
+    }
 
     const renderRounds = () => {
         const roundsArr = props?.raceData?.MRData?.RaceTable?.Races
         console.log("Rounds Array", roundsArr)
 
-        if(roundsArr !== undefined){
-            return(
+        if (roundsArr !== undefined) {
+            return (
                 roundsArr.map((r, i) => (
                     <Grid item key={i}>
                         <Card >
@@ -34,7 +37,7 @@ function SeasonPage(props) {
                     </Grid>
                 ))
             )
-        }
+        } 
     }
 
 
@@ -42,8 +45,9 @@ function SeasonPage(props) {
         <>
             <AppBar position="relative">
                 <Toolbar>
-                    <Button variant="contained" >Pick another driver</Button>
-                    <Button variant="contained" >Pick another season</Button>
+                    <Link to={"/seasonselect"}>
+                        <Button color="secondary" variant="contained" onClick={() => changeTheSeason()}>Choose Again</Button>
+                    </Link>
                 </Toolbar>
             </AppBar>
             <main>
@@ -60,7 +64,7 @@ function SeasonPage(props) {
                 <div>
                     <Container maxWidth="lg">
                         <Grid container spacing={3}>
-                           {renderRounds()}
+                            {renderRounds()}
                         </Grid>
                     </Container>
                 </div>

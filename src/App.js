@@ -25,7 +25,7 @@ function App() {
         console.log("raceData", races);
         setRaceData(races)
       });
-  }, [driverId]);
+  }, [driverId, selectedSeason]);
   
   console.log("Appside Race Data", raceData)
   console.log("Appside DriverID", driverId)
@@ -43,7 +43,7 @@ function App() {
         <DriverSelect selectedDriver={selectedDriver} setSelectedDriver={setSelectedDriver} setSelectedSeason={setSelectedSeason} selectedSeason={selectedSeason} setDriverId={setDriverId} />
       </Route>
       <Route path="/seasondisplay">
-        <SeasonPage selectedSeason={selectedSeason} selectedDriver={selectedDriver} raceData={raceData} />
+        <SeasonPage selectedSeason={selectedSeason} setSelectedSeason={setSelectedSeason} selectedDriver={selectedDriver} setSelectedDriver={setSelectedDriver} raceData={raceData} />
       </Route>
       
 
