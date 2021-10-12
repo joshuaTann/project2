@@ -1,12 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Typography } from "@mui/material";
-import { Container } from "@mui/material";
-import { Autocomplete } from "@mui/material";
-import { TextField } from "@mui/material";
-import { Button } from "@mui/material";
 import { Link } from 'react-router-dom'
-
+import { Typography, Container, Autocomplete, TextField, Button, Grid } from "@mui/material";
 
 
 
@@ -27,11 +22,11 @@ function DriverSelect(props) {
     const driversArr = driverData?.MRData?.DriverTable?.Drivers
 
     const listOfDrivers = driversArr?.map((driver, i) => {
-        return (driver.givenName + " " + driver.familyName)
+        return (driver.givenName + " " + driver.familyName) //Lewis Hamilton 
     })
 
     const listOfDriversId = driversArr?.map((driver) => {
-        return (driver?.driverId)
+        return (driver?.driverId) //hamilton 
     })
 
     console.log("listOfDrivers", listOfDrivers)
@@ -39,7 +34,7 @@ function DriverSelect(props) {
 
     //Making sure the app doesn't crash while the api is fetching the list of drivers for that particular season
     if(listOfDrivers === undefined){
-        var displayDriverList = ["loading drivers please wait a moment..."]
+        var displayDriverList = ["Select A Driver"]
     } else {
         displayDriverList = listOfDrivers
     }
@@ -52,7 +47,7 @@ function DriverSelect(props) {
     }
     console.log("selectedDriver", props.selectedDriver)
 
-    if (props.selectedDriver !== undefined) {
+    if (props.selectedDriver !== undefined && displayDriverList === listOfDrivers) {
         const driverIndex = listOfDrivers.indexOf(`${props.selectedDriver}`)
         console.log("driverIndex", driverIndex)
         var driverId = listOfDriversId[driverIndex]
@@ -76,7 +71,7 @@ function DriverSelect(props) {
 
 
     return (
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" sx={{p: 20}}>
             <Typography variant="h2" >
                 Choose your Driver:
             </Typography>
@@ -85,18 +80,21 @@ function DriverSelect(props) {
                 disablePortal
                 id="combo-box-demo"
                 options={displayDriverList}
-                sx={{ width: 300 }}
+                sx={{ml: 10, width: 300, padding: 5}}
                 renderInput={(params) => <TextField {...params} label="Select a Driver" />}               
             />
-            <Link onClick={handleLink} to={"/seasondisplay"}>
-                <Button variant="contained">See the results</Button>
+            <Grid container direction="column" spacing={2}>
+                <Grid item>
+            <Link onClick={handleLink} to={"/seasondisplay"} style={{textDecoration: "none"}}>
+                <Button variant="contained" sx={{px: 4}}>See the results</Button>
             </Link>
-            <p>Add something to separate these buttons later</p>
-            <div>
-                <Link to={"/seasonselect"}>
-                    <Button variant="contained" onClick={() => changeTheSeason()}>Change the season</Button>
+            </Grid>
+            <Grid item>
+                <Link to={"/seasonselect"} style={{textDecoration: "none"}}>
+                    <Button variant="outlined" onClick={() => changeTheSeason()}>Change the season</Button>
                 </Link>
-            </div>
+            </Grid>
+            </Grid>
 
         </Container>
     )

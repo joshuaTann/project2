@@ -12,7 +12,7 @@ function SeasonSelect(props) {
 
     const listOfSeasons = []
     var year = new Date().getFullYear()
-    for (let i = 1950; i <= year; i++) {
+    for (let i = year; i >= 1950; i--) {
         listOfSeasons.push(`${i}`)
     }
     
@@ -32,7 +32,7 @@ console.log("Season Side Selected Season", props.selectedSeason)
 
 
     return (
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" sx={{p: 20}}>
             <Typography variant="h2" >
                 Choose your Season:
             </Typography>
@@ -41,10 +41,10 @@ console.log("Season Side Selected Season", props.selectedSeason)
                 disablePortal
                 id="combo-box-demo"
                 options={listOfSeasons}
-                sx={{ width: 300, padding: 5 }}
+                sx={{ml: 9, width: 300, padding: 5 }}
                 renderInput={(params) => <TextField {...params} label="Select a season" />}
             />
-            <Link onClick={handleLink}  to={"/driverselect"}>
+            <Link onClick={handleLink}  to={"/driverselect"} style={{textDecoration: "none"}}>
             <Button variant="contained">Pick your Driver</Button>
             </Link>
         </Container>
