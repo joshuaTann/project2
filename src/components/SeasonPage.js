@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+
 import { Card, CardContent, CardActions, Container, Grid, Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import { borderRadius } from "@mui/system";
+import { Line } from "react-chartjs-2"
 
 
 function SeasonPage(props) {
@@ -16,7 +16,14 @@ function SeasonPage(props) {
         props.setSelectedDriver();
     }
 
+
     const roundsArr = props?.raceData?.MRData?.RaceTable?.Races
+    if (roundsArr !== undefined) {
+    var seasonFinishes = roundsArr.map((r) => r?.Results[0]?.position)
+    console.log("seasonFinishes", seasonFinishes)
+    var roundsParticipated = roundsArr.map((r) => r?.round)
+    console.log("roundsParticipated", roundsParticipated)
+    }
 
     const renderRounds = () => {
 
@@ -26,7 +33,7 @@ function SeasonPage(props) {
             return (
                 roundsArr.map((r, i) => (
                     <Grid item key={i} xs={12} sm={6} md={4}>
-                        <Card sx={{borderRadius: 7, opacity: 0.8 }}>
+                        <Card sx={{ borderRadius: 7, opacity: 0.8 }}>
                             <CardContent>
                                 <Typography variant="h5" gutterBottom>Round: {r?.round}</Typography>
                                 <Typography variant="h7" gutterBottom>Grand Prix: {r?.raceName}</Typography>
@@ -34,7 +41,7 @@ function SeasonPage(props) {
                                 <Typography gutterBottom>{props?.selectedDriver} Finishing Position: <strong>{r?.Results[0]?.position}</strong></Typography>
                             </CardContent>
                             <CardActions>
-                                <Link to={"/dashboard"} style={{ textDecoration: "none"}}>
+                                <Link to={"/dashboard"} style={{ textDecoration: "none" }}>
                                     <Button onClick={() => { props.setRoundIndex(i); props.setRoundNumber(r?.round) }}>See More</Button>
                                 </Link>
                             </CardActions>
@@ -71,12 +78,36 @@ function SeasonPage(props) {
                     This page displays the results for the season by round in the cards below. Click onto them to see a dashboard of more detalied information from that particular round of the championship
                 </Typography>
             </Container>
+            <Container sx={{pb: 10, pt: 0}}>
+                <Line
+                    data={{
+                        labels: roundsParticipated,
+                        datasets: [{
+                            label: "Finishing Position",
+                            data: seasonFinishes,
+                            backgroundColor: "yellow"
+                        }]
+                    }}
+                    height={300}
+                    width={400}
+                    options={{
+                        maintainAspectRatio: false,
+                        scales: {
+                            yAxis: [{
+                              ticks: {
+                                reverse: true,
+                              }
+                            }]
+                          }
+                    }}
+                />
+            </Container>
             <Container maxWidth="lg">
                 <Grid container spacing={5}>
                     {renderRounds()}
                 </Grid>
             </Container>
-            <Container sx={{p: 5}}>
+            <Container sx={{ p: 5 }}>
                 {renderButton()}
             </Container>
 
