@@ -26,10 +26,10 @@ function Dashboard(props) {
 
     return (
         <>
-            <Grid container spacing={3} sx={{ p: 5 }}>
+            <Grid container spacing={4} sx={{ p: 5 }}>
 
                 <Grid item sm={12}>
-                    <Card className="dashCard">
+                    <Card className="dashCards">
                         <CardContent>
                             <Typography variant="h2">Season: {props?.selectedSeason}</Typography>
                             <Typography variant="h4">Round: {thisRound?.round}</Typography>
@@ -37,14 +37,14 @@ function Dashboard(props) {
                     </Card>
                 </Grid>
                 <Grid item sm={6}>
-                    <Card>
+                    <Card className="dashCards">
                         <CardContent>
                             <Typography variant="h6">{thisRound?.raceName}</Typography>
                         </CardContent>
                     </Card>
                 </Grid>
                 <Grid item sm={6}>
-                    <Card>
+                    <Card className="dashCards">
                         <CardContent>
                             <Typography variant="h6">Circuit: {thisRound?.Circuit?.circuitName}</Typography>
                         </CardContent>
@@ -53,7 +53,7 @@ function Dashboard(props) {
 
                 <Grid item sm={12} lg={4} container direction="column" spacing={2}>
                     <Grid item sm={4}>
-                        <Card>
+                        <Card className="dashCards">
                             <CardContent>
                                 <Typography variant="h4">{props?.selectedDriver}</Typography>
                                 <Typography variant="h6">Nationality: {thisRound?.Results[0]?.Driver?.nationality}</Typography>
@@ -61,7 +61,7 @@ function Dashboard(props) {
                         </Card>
                     </Grid>
                     <Grid item sm={12} lg={4} >
-                        <Card>
+                        <Card className="dashCards">
                             <CardContent>
                                 <Typography variant="h5">Team: {thisRound?.Results[0]?.Constructor?.name}</Typography>
                                 <Typography variant="h7">Car Number {thisRound?.Results[0]?.Driver?.permanentNumber}</Typography>
@@ -72,7 +72,7 @@ function Dashboard(props) {
 
 
                 <Grid item sm={12} lg={4} >
-                    <Card>
+                    <Card className="dashCards">
                         <CardContent>
                             <Typography variant="h4" align="Left" gutterBottom>Results</Typography>
                             <Typography variant="h5">Grid Position: {thisRound?.Results[0]?.grid}</Typography>
@@ -86,7 +86,7 @@ function Dashboard(props) {
 
 
                 <Grid item sm={12} lg={4} >
-                    <Card>
+                    <Card className="dashCards">
                         <CardContent>
                             <Typography variant="h4" align="Left" gutterBottom>Podium Finishers</Typography>
                             <Typography variant="h5" gutterBottom>

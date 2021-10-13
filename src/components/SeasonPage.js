@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Card, CardContent, CardActions, Container, Grid, Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import { borderRadius } from "@mui/system";
 
 
 function SeasonPage(props) {
@@ -25,7 +26,7 @@ function SeasonPage(props) {
             return (
                 roundsArr.map((r, i) => (
                     <Grid item key={i} xs={12} sm={6} md={4}>
-                        <Card sx={{ border: 1, borderColor: 'primary.main' }}>
+                        <Card sx={{borderRadius: 7, opacity: 0.8 }}>
                             <CardContent>
                                 <Typography variant="h5" gutterBottom>Round: {r?.round}</Typography>
                                 <Typography variant="h7" gutterBottom>Grand Prix: {r?.raceName}</Typography>
@@ -33,7 +34,7 @@ function SeasonPage(props) {
                                 <Typography gutterBottom>{props?.selectedDriver} Finishing Position: <strong>{r?.Results[0]?.position}</strong></Typography>
                             </CardContent>
                             <CardActions>
-                                <Link to={"/dashboard"} style={{ textDecoration: "none" }}>
+                                <Link to={"/dashboard"} style={{ textDecoration: "none"}}>
                                     <Button onClick={() => { props.setRoundIndex(i); props.setRoundNumber(r?.round) }}>See More</Button>
                                 </Link>
                             </CardActions>
@@ -52,7 +53,7 @@ function SeasonPage(props) {
                         <Button variant="contained" onClick={() => changeTheDriver()} sx={{ m: 2 }}>Change Drivers</Button>
                     </Link>
                     <Link to={"/seasonselect"} style={{ textDecoration: "none" }}>
-                        <Button variant="outlined" onClick={() => changeTheSeason()} sx={{ m: 2 }}>Change Seasons</Button>
+                        <Button variant="outlined" color="secondary" onClick={() => changeTheSeason()} sx={{ m: 2 }}>Change Seasons</Button>
                     </Link>
                 </Container>
             )
@@ -71,13 +72,13 @@ function SeasonPage(props) {
                 </Typography>
             </Container>
             <Container maxWidth="lg">
-                <Grid container spacing={2}>
+                <Grid container spacing={5}>
                     {renderRounds()}
                 </Grid>
             </Container>
-            <div>
+            <Container sx={{p: 5}}>
                 {renderButton()}
-            </div>
+            </Container>
 
         </>
     )

@@ -33,7 +33,7 @@ function DriverSelect(props) {
 
 
     //Making sure the app doesn't crash while the api is fetching the list of drivers for that particular season
-    if(listOfDrivers === undefined){
+    if (listOfDrivers === undefined) {
         var displayDriverList = ["Select A Driver"]
     } else {
         displayDriverList = listOfDrivers
@@ -71,7 +71,7 @@ function DriverSelect(props) {
 
 
     return (
-        <Container maxWidth="sm" sx={{p: 20}}>
+        <Container maxWidth="sm" sx={{ p: 20 }}>
             <Typography variant="h2" >
                 Choose your Driver:
             </Typography>
@@ -80,20 +80,20 @@ function DriverSelect(props) {
                 disablePortal
                 id="combo-box-demo"
                 options={displayDriverList}
-                sx={{ml: 10, width: 300, padding: 5}}
-                renderInput={(params) => <TextField {...params} label="Select a Driver" />}               
+                sx={{ ml: 10, width: 300, padding: 5 }}
+                renderInput={(params) => <TextField {...params} label="Select a Driver" />}
             />
             <Grid container direction="column" spacing={2}>
                 <Grid item>
-            <Link onClick={handleLink} to={"/seasondisplay"} style={{textDecoration: "none"}}>
-                <Button variant="contained" sx={{px: 4}}>See the results</Button>
-            </Link>
-            </Grid>
-            <Grid item>
-                <Link to={"/seasonselect"} style={{textDecoration: "none"}}>
-                    <Button variant="outlined" onClick={() => changeTheSeason()}>Change the season</Button>
-                </Link>
-            </Grid>
+                    <Link onClick={handleLink} to={"/seasondisplay"} style={{ textDecoration: "none" }}>
+                        <Button variant="contained" sx={{ px: 4 }}>See the results</Button>
+                    </Link>
+                </Grid>
+                <Grid item>
+                    <Link to={"/seasonselect"} style={{ textDecoration: "none" }}>
+                        <Button variant="outlined" color="secondary" onClick={() => changeTheSeason()}>Change the season</Button>
+                    </Link>
+                </Grid>
             </Grid>
 
         </Container>

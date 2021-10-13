@@ -10,8 +10,10 @@ import Dashboard from './components/Dashboard';
 import { theme } from './theme';
 import { ThemeProvider } from '@mui/system';
 
+
 function App() {
   <CssBaseline />
+
 
   const [raceData, setRaceData] = useState([]) //race data for the season
   const [selectedSeason, setSelectedSeason] = useState() //setting the selected season
@@ -37,7 +39,8 @@ function App() {
   console.log("Appside Selected Season", selectedSeason)
   console.log("Appside roundIndex", roundIndex)
   console.log("Appside roundNumber", roundNumber)
-
+ 
+  
   return (
     <div className="App">
       <ThemeProvider theme={theme}>

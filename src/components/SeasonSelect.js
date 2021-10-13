@@ -41,7 +41,7 @@ console.log("Season Side Selected Season", props.selectedSeason)
                 disablePortal
                 id="combo-box-demo"
                 options={listOfSeasons}
-                sx={{ml: 9, width: 300, padding: 5 }}
+                sx={{ml: 9, width: 300, padding: 5, borderColor: "white"}}
                 renderInput={(params) => <TextField {...params} label="Select a season" />}
             />
             <Link onClick={handleLink}  to={"/driverselect"} style={{textDecoration: "none"}}>
