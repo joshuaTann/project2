@@ -18,12 +18,29 @@ function SeasonPage(props) {
 
 
     const roundsArr = props?.raceData?.MRData?.RaceTable?.Races
+
     if (roundsArr !== undefined) {
-    var seasonFinishes = roundsArr.map((r) => r?.Results[0]?.position)
-    console.log("seasonFinishes", seasonFinishes)
-    var roundsParticipated = roundsArr.map((r) => r?.round)
-    console.log("roundsParticipated", roundsParticipated)
+        var seasonFinishes = roundsArr.map((r) => r?.Results[0]?.position)
+        console.log("seasonFinishes", seasonFinishes)
+        var roundsParticipated = roundsArr.map((r) => r?.round)
+        console.log("roundsParticipated", roundsParticipated)
     }
+
+    const data = {
+        labels: roundsParticipated,
+        datasets: [{
+            label: "Finishing Position",
+            data: seasonFinishes,
+            backgroundColor: "yellow"
+        }]
+    }
+
+    const options = {
+        maintainAspectRatio: false,
+        scales: {
+            y: { min: 0, reverse: true}
+        },
+    };
 
     const renderRounds = () => {
 
@@ -78,28 +95,13 @@ function SeasonPage(props) {
                     This page displays the results for the season by round in the cards below. Click onto them to see a dashboard of more detalied information from that particular round of the championship
                 </Typography>
             </Container>
-            <Container sx={{pb: 10, pt: 0}}>
+            <Container sx={{ pb: 10, pt: 0 }}>
                 <Line
-                    data={{
-                        labels: roundsParticipated,
-                        datasets: [{
-                            label: "Finishing Position",
-                            data: seasonFinishes,
-                            backgroundColor: "yellow"
-                        }]
-                    }}
                     height={300}
                     width={400}
-                    options={{
-                        maintainAspectRatio: false,
-                        scales: {
-                            yAxis: [{
-                              ticks: {
-                                reverse: true,
-                              }
-                            }]
-                          }
-                    }}
+                    data={data}
+                    options={options}
+
                 />
             </Container>
             <Container maxWidth="lg">
