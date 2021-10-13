@@ -29,7 +29,7 @@ function Dashboard(props) {
             <Grid container spacing={3} sx={{ p: 5 }}>
 
                 <Grid item sm={12}>
-                    <Card>
+                    <Card className="dashCard">
                         <CardContent>
                             <Typography variant="h2">Season: {props?.selectedSeason}</Typography>
                             <Typography variant="h4">Round: {thisRound?.round}</Typography>
@@ -51,7 +51,7 @@ function Dashboard(props) {
                     </Card>
                 </Grid>
 
-                <Grid item sm={4} container direction="column" spacing={2}>
+                <Grid item sm={12} lg={4} container direction="column" spacing={2}>
                     <Grid item sm={4}>
                         <Card>
                             <CardContent>
@@ -60,7 +60,7 @@ function Dashboard(props) {
                             </CardContent>
                         </Card>
                     </Grid>
-                    <Grid item sm={4}>
+                    <Grid item sm={12} lg={4} >
                         <Card>
                             <CardContent>
                                 <Typography variant="h5">Team: {thisRound?.Results[0]?.Constructor?.name}</Typography>
@@ -71,7 +71,7 @@ function Dashboard(props) {
                 </Grid>
 
 
-                <Grid item sm={4}>
+                <Grid item sm={12} lg={4} >
                     <Card>
                         <CardContent>
                             <Typography variant="h4" align="Left" gutterBottom>Results</Typography>
@@ -85,7 +85,7 @@ function Dashboard(props) {
 
 
 
-                <Grid item sm={4} >
+                <Grid item sm={12} lg={4} >
                     <Card>
                         <CardContent>
                             <Typography variant="h4" align="Left" gutterBottom>Podium Finishers</Typography>

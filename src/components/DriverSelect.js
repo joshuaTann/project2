@@ -63,7 +63,7 @@ function DriverSelect(props) {
 
 
     const handleLink = (event) => {
-        if (props.selectedDriver === undefined || props.selectedDriver === null) {
+        if (props.selectedDriver === undefined || props.selectedDriver === null || props.selectedDriver === "Select A Driver") {
             alert("Please select a driver before proceeding")
             event.preventDefault()
         }
