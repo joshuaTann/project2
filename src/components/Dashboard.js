@@ -7,20 +7,19 @@ function Dashboard(props) {
     const [selectedRoundData, setSelectedRoundData] = useState()
 
     useEffect(() => {
-        fetch(`https://ergast.com/api/f1/${props.selectedSeason}/${props.roundNumber}/results.json?`)
+        fetch(`https://ergast.com/api/f1/${props.selectedSeason}/${props.roundNumber.number}/results.json?`)
             .then((response) => response.json())
             .then((round) => {
                 console.log("Round Data:", round);
                 setSelectedRoundData(round)
             });
-        console.log("ROUNDS URL", `https://ergast.com/api/f1/${props.selectedSeason}/${props.roundNumber}/results.json?`)
+        console.log("ROUNDS URL", `https://ergast.com/api/f1/${props.selectedSeason}/${props.roundNumber.number}/results.json?`)
     }, [props.selectedSeason, props.roundNumber]);
 
-    const thisRound = props?.raceData?.MRData?.RaceTable?.Races[props.roundIndex]
+    const thisRound = props?.raceData?.MRData?.RaceTable?.Races[props.roundNumber.index]
     const thisRace = selectedRoundData?.MRData?.RaceTable?.Races[0]
 
     function handleGoBack() {
-        props.setRoundIndex();
         props.setRoundNumber();
     }
 
@@ -74,7 +73,7 @@ function Dashboard(props) {
                 <Grid item sm={12} lg={4} >
                     <Card className="dashCards">
                         <CardContent>
-                            <Typography variant="h4" align="Left" gutterBottom>Results</Typography>
+                            <Typography variant="h4" align="left" gutterBottom>Results</Typography>
                             <Typography variant="h5">Grid Position: {thisRound?.Results[0]?.grid}</Typography>
                             <Typography variant="h5">Finishing Position: {thisRound?.Results[0]?.position}</Typography>
                             <Typography variant="h6">Points Scored: {thisRound?.Results[0]?.points}</Typography>
@@ -88,7 +87,7 @@ function Dashboard(props) {
                 <Grid item sm={12} lg={4} >
                     <Card className="dashCards">
                         <CardContent>
-                            <Typography variant="h4" align="Left" gutterBottom>Podium Finishers</Typography>
+                            <Typography variant="h4" align="left" gutterBottom>Podium Finishers</Typography>
                             <Typography variant="h5" gutterBottom>
                                 <strong>1: {thisRace?.Results[0]?.Driver?.givenName} {thisRace?.Results[0]?.Driver?.familyName} {thisRace?.Results[0]?.Time?.time}</strong>
                             </Typography>
@@ -101,7 +100,6 @@ function Dashboard(props) {
                         </CardContent>
                     </Card>
                 </Grid>
-
             </Grid>
 
 
@@ -116,3 +114,4 @@ function Dashboard(props) {
 }
 
 export default Dashboard
+

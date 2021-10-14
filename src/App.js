@@ -1,5 +1,5 @@
 import './App.css';
-import { CssBaseline } from '@mui/material';
+import { CssBaseline} from '@mui/material';
 import { useState, useEffect } from 'react';
 import { Route } from "react-router-dom";
 import Homepage from './components/Homepage';
@@ -19,7 +19,6 @@ function App() {
   const [selectedSeason, setSelectedSeason] = useState() //setting the selected season
   const [selectedDriver, setSelectedDriver] = useState() //setting the selected driver
   const [driverId, setDriverId] = useState() //setting the selected driverId for 
-  const [roundIndex, setRoundIndex] = useState() //setting the selected roundIndex
   const [roundNumber, setRoundNumber] = useState() //setting the selected roundIndex
 
   var url = `https://ergast.com/api/f1/${selectedSeason}/drivers/${driverId}/results.json?`
@@ -37,7 +36,6 @@ function App() {
   console.log("Appside Race Data", raceData)
   console.log("Appside DriverID", driverId)
   console.log("Appside Selected Season", selectedSeason)
-  console.log("Appside roundIndex", roundIndex)
   console.log("Appside roundNumber", roundNumber)
  
   
@@ -54,10 +52,10 @@ function App() {
           <DriverSelect selectedDriver={selectedDriver} setSelectedDriver={setSelectedDriver} setSelectedSeason={setSelectedSeason} selectedSeason={selectedSeason} setDriverId={setDriverId} />
         </Route>
         <Route path="/seasondisplay">
-          <SeasonPage selectedSeason={selectedSeason} setSelectedSeason={setSelectedSeason} selectedDriver={selectedDriver} setSelectedDriver={setSelectedDriver} raceData={raceData} setRoundIndex={setRoundIndex} setRoundNumber={setRoundNumber} />
+          <SeasonPage selectedSeason={selectedSeason} setSelectedSeason={setSelectedSeason} selectedDriver={selectedDriver} setSelectedDriver={setSelectedDriver} raceData={raceData} setRoundNumber={setRoundNumber} />
         </Route>
         <Route path="/dashboard">
-          <Dashboard raceData={raceData} selectedDriver={selectedDriver} selectedSeason={selectedSeason} roundIndex={roundIndex} setRoundIndex={setRoundIndex} roundNumber={roundNumber} setRoundNumber={setRoundNumber} />
+          <Dashboard raceData={raceData} selectedDriver={selectedDriver} selectedSeason={selectedSeason} roundNumber={roundNumber} setRoundNumber={setRoundNumber} />
         </Route>
       </ThemeProvider>
     </div>
@@ -65,3 +63,4 @@ function App() {
 }
 
 export default App;
+

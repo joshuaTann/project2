@@ -5,7 +5,7 @@ body {
   text-align: center;
   color: white;
   background: transparent;
-  background: linear-gradient(180deg, #ff3d00 0%, #00a0b2  50%, #ff3d00 100%);
+  background: linear-gradient(#ff3d00 0%, #00a0b2  50%, #ff3d00 100%);
 }
 
 .dashCards {
