@@ -71,19 +71,24 @@ function DriverSelect(props) {
 
 
     return (
-        <Container maxWidth="sm" sx={{ p: 20 }}>
-            <Typography variant="h2" >
-                Choose your Driver:
-            </Typography>
-            <Autocomplete
-                onChange={(event, value) => selectHandler(value)}
-                disablePortal
-                id="combo-box-demo"
-                options={displayDriverList}
-                sx={{ ml: 10, width: 300, padding: 5 }}
-                renderInput={(params) => <TextField {...params} label="Select a Driver" />}
-            />
+        <Container maxWidth="sm" sx={{ pt: 20 }}>
             <Grid container direction="column" spacing={2}>
+                <Grid item>
+                    <Typography variant="h2">
+                        Choose your Driver:
+                    </Typography>
+                </Grid>
+
+                <Grid item>
+                    <Autocomplete
+                        onChange={(event, value) => selectHandler(value)}
+                        disablePortal
+                        id="combo-box-demo"
+                        options={displayDriverList}
+                        sx={{ mx: 10, width: 300, padding: 5 }}
+                        renderInput={(params) => <TextField {...params} label="Select a Driver" />}
+                    />
+                </Grid>
                 <Grid item>
                     <Link onClick={handleLink} to={"/seasondisplay"} style={{ textDecoration: "none" }}>
                         <Button variant="contained" sx={{ px: 4 }}>See the results</Button>
@@ -94,8 +99,8 @@ function DriverSelect(props) {
                         <Button variant="outlined" color="secondary" onClick={() => changeTheSeason()}>Change the season</Button>
                     </Link>
                 </Grid>
-            </Grid>
 
+            </Grid>
         </Container>
     )
 }

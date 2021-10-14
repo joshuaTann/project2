@@ -27,7 +27,7 @@ function Dashboard(props) {
         <>
             <Grid container spacing={4} sx={{ p: 5 }}>
 
-                <Grid item sm={12}>
+                <Grid item xs={12}>
                     <Card className="dashCards">
                         <CardContent>
                             <Typography variant="h2">Season: {props?.selectedSeason}</Typography>
@@ -35,14 +35,14 @@ function Dashboard(props) {
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item sm={6}>
+                <Grid item xs={6}>
                     <Card className="dashCards">
                         <CardContent>
                             <Typography variant="h6">{thisRound?.raceName}</Typography>
                         </CardContent>
                     </Card>
                 </Grid>
-                <Grid item sm={6}>
+                <Grid item xs={6}>
                     <Card className="dashCards">
                         <CardContent>
                             <Typography variant="h6">Circuit: {thisRound?.Circuit?.circuitName}</Typography>
@@ -50,8 +50,8 @@ function Dashboard(props) {
                     </Card>
                 </Grid>
 
-                <Grid item sm={12} lg={4} container direction="column" spacing={2}>
-                    <Grid item sm={4}>
+                <Grid item xs={12} lg={4} container direction="column" spacing={2}>
+                    <Grid item xs={4}>
                         <Card className="dashCards">
                             <CardContent>
                                 <Typography variant="h4">{props?.selectedDriver}</Typography>

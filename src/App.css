@@ -15,4 +15,11 @@ body {
   border-color: #e91e63;
 }
 
+@media (max-width: 1000px) {
+.App {
+  background: #ff3d00
+}
+
+
+}
 
