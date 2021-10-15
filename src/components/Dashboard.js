@@ -51,7 +51,7 @@ function Dashboard(props) {
                 </Grid>
 
                 <Grid item xs={12} lg={4} container direction="column" spacing={2}>
-                    <Grid item xs={4}>
+                    <Grid item sm={12} lg={4}>
                         <Card className="dashCards">
                             <CardContent>
                                 <Typography variant="h4">{props?.selectedDriver}</Typography>
